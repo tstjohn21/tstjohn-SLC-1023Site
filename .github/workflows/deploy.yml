@@ -1,0 +1,20 @@
+name: Deploy Website
+
+on:
+  push:
+    branches:
+      - main  # This means the action will trigger when changes are pushed to the main branch
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest  # Runs on a Linux-based virtual machine
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3  # Retrieves your repository files
+
+      - name: Deploy to GitHub Pages
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          branch: gh-pages  # The branch where GitHub Pages serves the site
+          folder: .  # Deploy everything in the repository root
